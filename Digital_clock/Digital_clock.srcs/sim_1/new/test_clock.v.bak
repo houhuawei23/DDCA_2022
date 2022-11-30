@@ -1,0 +1,64 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 11/24/2022 07:27:55 PM
+// Design Name: 
+// Module Name: test_clock
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module test_clock();
+        reg CLK;
+        reg reset;
+        reg [5:0]set;
+        wire clock_clk; //1Hz  
+        wire scan_clk; //1kHZ
+		reg [5:0] set;
+		reg [3:0] sethour1;
+		reg [3:0] sethour2;
+		reg [3:0] setminute1;
+		reg [3:0] setminute2;
+		reg [3:0] setsecond1;
+		reg [3:0] setsecond2;
+		wire [11:0]display_out;
+divclk_scan myscan_clk( //输出1000Hz扫描时钟
+        .CLK(CLK), 
+        .reset(reset),
+        .scan_clk(scan_clk) 
+ );
+
+divclk_1Hz myclock_clk( //输出1Hz计时时钟
+        .CLK(CLK), 
+        .reset(reset),
+        .clock_clk(clock_clk)
+);
+clock test_clock(
+        .clock_clk(clock_clk), 
+        .scan_clk(scan_clk), 
+        .reset(reset), 
+        .set(set),
+        .sethour1(sethour1),
+        .sethour2(sethour2),
+        .setminute1(setminute1),
+        .setminute2(setminute2),
+        .setsecond1(setsecond1),
+        .setsecond2(setsecond2),
+    
+        .clock_seg(display_out[]),
+        .seln(display_out[])
+    );
+
+endmodule

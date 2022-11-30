@@ -1,0 +1,218 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 11/25/2022 01:10:09 PM
+// Design Name: 
+// Module Name: button_set_time
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+/*
+button_set_time(
+            .scan_clk(),
+            .reset(),
+            .btnu(), 
+            .btnd(), 
+            .btnl(), 
+            .btnr(), 
+            .btnc(),
+
+
+            .sethour1(), 
+            .sethour2(), 
+            .setminute1(),
+            .setminute2(),
+            .setsecond1(),
+            .setsecond2()
+    );
+*/
+
+module button_set_time(
+            input CLK, reset,
+            input set,
+            input btnu, btnd, btnl, btnr, btnc,
+//            input sw0, sw1, 
+//            sw2, sw3,
+//            input [5:0] setbit,
+            //?
+
+            input [3:0] hour1, 
+            input [3:0] hour2, 
+            input [3:0] minute1,
+            input [3:0] minute2,
+            input [3:0] second1,
+            input [3:0] second2,
+            output reg [3:0]sethour1, 
+            output reg [3:0]sethour2, 
+            output reg [3:0]setminute1,
+            output reg [3:0]setminute2,
+            output reg [3:0]setsecond1,
+            output reg [3:0]setsecond2,
+            
+            output wire[5:0] setbbt
+    );
+reg [5:0] setbit;
+assign setbbt = setbit;
+reg [2:0] btnu_reg;
+reg [2:0] btnd_reg;
+reg [2:0] btnl_reg;
+reg [2:0] btnr_reg;
+reg [2:0] btnc_reg;
+//reg [2:0] sw0_reg;
+//reg [2:0] sw1_reg;
+//reg [2:0] sw2_reg;
+//reg [2:0] sw3_reg;
+wire btnu_down;
+wire btnd_down;
+wire btnl_down;
+wire btnr_down;
+wire btnc_down;
+//wire sw0;
+//wire sw1;
+//wire sw2;
+//wire sw3;
+assign btnu_down = ~btnu_reg[2]&(btnu_reg[1]);
+assign btnd_down = ~btnd_reg[2]&(btnd_reg[1]);
+assign btnl_down = ~btnl_reg[2]&(btnl_reg[1]);
+assign btnr_down = ~btnr_reg[2]&(btnr_reg[1]);
+assign btnc_down = ~btnc_reg[2]&(btnc_reg[1]);
+
+initial begin
+    setbit <= 6'b00_00_01;
+    sethour1 <=   4'b0;
+    sethour2 <=   4'b0;
+    setminute1 <= 4'b0;
+    setminute2 <= 4'b0;
+    setsecond1 <= 4'b0;
+    setsecond2 <= 4'b0;
+end
+
+always@(posedge CLK, negedge reset)begin
+    if(~reset)begin
+        btnu_reg<=3'b0;
+        btnd_reg<=3'b0;
+        btnl_reg<=3'b0;
+        btnr_reg<=3'b0;
+        btnc_reg<=3'b0;
+    end
+    else begin
+        btnu_reg<= {btnu_reg[1:0], btnu};
+        btnd_reg<= {btnd_reg[1:0], btnd};
+        btnl_reg<= {btnl_reg[1:0], btnl};
+        btnr_reg<= {btnr_reg[1:0], btnr};
+        btnc_reg<= {btnc_reg[1:0], btnc};
+    end
+end
+always@(posedge CLK, negedge reset)begin
+    if(~reset)begin
+        setbit <= 6'b00_00_01;
+        sethour1 <= 4'b0; 
+        sethour2 <= 4'b0;
+        setminute1 <= 4'b0;
+        setminute2 <= 4'b0;
+        setsecond1 <= 4'b0;
+        setsecond2 <= 4'b0;
+    end
+//    else if(btnl_down && ~setbit[5]) setbit <= {setbit[4:0], setbit[5]};
+//    else if(btnr_down && ~setbit[0]) setbit <= {setbit[0] ,setbit[5:1]};
+    else if(btnl_down) begin 
+        setbit <= {setbit[4:0], setbit[5]};
+        sethour1 <=   sethour1;
+        sethour2 <=   sethour2;
+        setminute1 <= setminute1;
+        setminute2 <= setminute2;
+        setsecond1 <= setsecond1;
+        setsecond2 <= setsecond2;
+    end
+    else if(btnr_down)begin 
+        setbit <= {setbit[0] ,setbit[5:1]};
+        sethour1 <=   sethour1;
+        sethour2 <=   sethour2;
+        setminute1 <= setminute1;
+        setminute2 <= setminute2;
+        setsecond1 <= setsecond1;
+        setsecond2 <= setsecond2;
+    end 
+    else if(btnu_down) begin
+        case(setbit)
+            6'b10_00_00:begin
+                if(sethour1==4'd2) sethour1   <=  sethour1;
+                else sethour1   <=  sethour1   + 4'b1;
+            end
+            6'b01_00_00:begin
+                if(sethour2==4'd9)sethour2   <=  sethour2;
+                else sethour2   <=  sethour2   + 4'b1;
+            end
+            6'b00_10_00:begin
+                if(setminute1==4'd5)setminute1 <=  setminute1;
+                else setminute1 <=  setminute1 + 4'b1;
+            end
+            6'b00_01_00:begin
+                if(setminute2==4'd9)setminute2 <=  setminute2;            
+                else setminute2 <=  setminute2 + 4'b1;                
+            end
+            6'b00_00_10:begin
+                if(setsecond1==4'd5) setsecond1 <= setsecond1;
+                else setsecond1 <= setsecond1 + 4'b1;
+            end
+            6'b00_00_01:begin
+                if(setsecond2==4'd9) setsecond2 <= setsecond2;
+                else setsecond2 <= setsecond2 + 4'b1;
+            end
+            default:begin
+                sethour1 <=   sethour1;
+                sethour2 <=   sethour2;
+                setminute1 <= setminute1;
+                setminute2 <= setminute2;
+                setsecond1 <= setsecond1;
+                setsecond2 <= setsecond2;
+                setbit <= setbit;
+            end
+        endcase
+    end
+    else if(btnd_down)begin
+        case(setbit)
+            6'b10_00_00:sethour1   <=  sethour1   - 4'b1;
+            6'b01_00_00:sethour2   <=  sethour2   - 4'b1;
+            6'b00_10_00:setminute1 <=  setminute1 - 4'b1;
+            6'b00_01_00:setminute2 <=  setminute2 - 4'b1;
+            6'b00_00_10:setsecond1 <= setsecond1 -  4'b1;
+            6'b00_00_01:setsecond2 <= setsecond2 -  4'b1;
+            default:begin
+                sethour1 <=   sethour1;
+                sethour2 <=   sethour2;
+                setminute1 <= setminute1;
+                setminute2 <= setminute2;
+                setsecond1 <= setsecond1;
+                setsecond2 <= setsecond2;
+                setbit <= setbit;
+            end
+        endcase
+    end
+    else begin;
+		#5;
+        sethour1 <=   sethour1;
+        sethour2 <=   sethour2;
+        setminute1 <= setminute1;
+        setminute2 <= setminute2;
+        setsecond1 <= setsecond1;
+        setsecond2 <= setsecond2;
+        setbit <= setbit;
+    end
+end
+endmodule
+//        sw0_reg <= {sw0_reg[1:0], sw0_reg};
+//        sw1_reg <= {sw1_reg[1:0], sw1_reg};
+//        sw2_reg <= {sw2_reg[1:0], sw2_reg};
+//        sw3_reg <= {sw3_reg[1:0], sw3_reg};

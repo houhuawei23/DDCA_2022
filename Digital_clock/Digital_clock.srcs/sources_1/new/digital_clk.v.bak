@@ -1,0 +1,114 @@
+module digital_clk(
+            input CLK, reset, set,
+            input BTNU, BTND, BTNL, BTNR, BTNC,
+            input SW0, SW1, SW2, SW3,
+            output reg[11:0] display_out
+    );  
+    
+     wire clock_clk; //1Hz  
+     wire scan_clk; //1kHZ   
+    
+     reg btnu, btnd, btnl, btnr, btnc;
+     reg sw0, sw1, sw2, sw3;
+     
+     wire clock_seg [11:0]; //
+     wire countup_seg [11:0];
+     wire countdown_seg [11:0];
+     wire alarm_seg [11:0];
+     reg sethour1; 
+     reg sethour2; 
+     reg setminute1;
+     reg setminute2;
+     reg setsecond1;
+     reg setsecond2;
+     
+     
+     
+     
+     
+ divclk_scan myscan_clk( //输出1000Hz扫描时钟
+            .CLK(CLK), 
+            .reset(reset),
+            .scan_clk(scan_clk) 
+ );
+ 
+divclk_1Hz( //输出1Hz计时时钟
+            .CLK(CLK), 
+            .reset(reset),
+            .clock_clk(clock_clk)
+);
+// io模块  
+in_out myio(
+           .CLK(CLK), 
+           .reset(reset),
+           
+           .BTNU(BTNU), 
+           .BTND(BTND), 
+           .BTNL(BTNL), 
+           .BTNR(BTNR), 
+           .BTNC(BTNC),
+           .SW0(SW0), 
+           .SW1(SW1), 
+           .SW2(SW2), 
+           .SW3(SW3),
+           
+           .btnu(btnu), 
+           .btnd(btnd), 
+           .btnl(btnl), 
+           .btnr(btnr), 
+           .btnc(btnc),
+           .sw0(sw0), 
+           .sw1(sw1), 
+           .sw2(sw2), 
+           .sw3(sw3)
+);
+// 时钟模块
+clock myclock(
+    .clock_clk(clock_clk), //1Hz  
+    .scan_clk(scan_clk), //1kHZ   
+    .reset(reset), 
+    .set(set),
+    .sethour1(sethour1),  
+    .sethour2(sethour2),  
+    .setminute1(setminute1),
+    .setminute2(setminute2),
+    .setsecond1(setsecond1),
+    .setsecond2(setsecond2),
+    
+    .clock_seg(clock_seg[7:0]),//8
+    .seln(clock_seg[11:8])//4
+);
+//正计时模块
+countup mycountup(
+    .clock_clk(clock_clk), //1Hz
+    .scan_clk(scan_clk), //1kHZ
+    .reset(reset), 
+    .set(set),
+    
+    .clock_seg(countup_seg[7:0]),//8
+    .seln(countup_seg[11:8])//4
+);
+//倒计时模块
+countdown mycountdown(
+    .clock_clk(clock_clk), //1Hz
+    .scan_clk(scan_clk), //1kHZ
+    .reset(reset), 
+    .set(set),
+    
+    .clock_seg(countdown_seg[7:0]),//8
+    .seln(countdown_seg[11:8])//4
+
+);
+//闹钟模块
+alarm myalarm(
+    .clock_clk(clock_clk), //1Hz
+    .scan_clk(scan_clk), //1kHZ
+    .reset(reset), 
+    .set(set),
+    
+    .clock_seg(alarm_seg[7:0]),//8
+    .seln(alarm_seg[11:8])//4
+);
+
+
+endmodule

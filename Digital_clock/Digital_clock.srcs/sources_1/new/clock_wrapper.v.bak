@@ -1,0 +1,181 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 11/25/2022 03:40:17 PM
+// Design Name: 
+// Module Name: clock_wrapper
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+module clock_wrapper(
+        input CLK,
+        input SW0,//reset
+        input SW1,//set
+        input BTNU, BTND, BTNL, BTNR, BTNC,
+        output [11:0]display_out
+);
+        wire reset;
+        //reg reset;
+        wire clock_clk; //1Hz  
+        wire scan_clk; //1kHZ
+        
+        wire set;
+		wire [3:0] hour1;  
+        wire [3:0] hour2;  
+        wire [3:0] minute1;
+        wire [3:0] minute2;
+        wire [3:0] second1;
+        wire [3:0] second2;
+		wire [3:0] sethour1;
+		wire [3:0] sethour2;
+		wire [3:0] setminute1;
+		wire [3:0] setminute2;
+		wire [3:0] setsecond1;
+		wire [3:0] setsecond2;
+		
+        wire btnu, btnd, btnl, btnr, btnc;
+        wire sw0,sw1;
+        
+debounce db_btnu(
+        .CLK(CLK),     
+        .reset(reset),   
+        .key_in(BTNU),  
+        .key_out(btnu) 
+);
+debounce db_btnd(
+        .CLK(CLK),     
+        .reset(reset),   
+        .key_in(BTND),  
+        .key_out(btnd) 
+);
+debounce db_btnl(
+        .CLK(CLK),     
+        .reset(reset),   
+        .key_in(BTNL),  
+        .key_out(btnl) 
+);
+debounce db_btnr(
+        .CLK(CLK),     
+        .reset(reset),   
+        .key_in(BTNR),  
+        .key_out(btnr) 
+);
+debounce db_btnc(
+        .CLK(CLK),     
+        .reset(reset),   
+        .key_in(BTNC),  
+        .key_out(btnc) 
+);
+//debounce db_btnu(
+//        .CLK(),     
+//        .reset(),   
+//        .key_in(),  
+//        .key_out() 
+//);
+//debounce db_btnu(
+//        .CLK(),     
+//        .reset(),   
+//        .key_in(),  
+//        .key_out() 
+//);
+button_set_time my_set( 
+            .scan_clk(CLK), 
+            .reset(reset),
+            .set(set),
+            .btnu(btnu), 
+            .btnd(btnd), 
+            .btnl(btnl), 
+            .btnr(btnr), 
+            .btnc(btnc),
+            .hour1(hour1),     
+            .hour2(hour2),
+            .minute1(minute1),
+            .minute2(minute2),
+            .second1(second1),
+            .second2(second2),
+			//out
+            .sethour1(sethour1), 
+            .sethour2(sethour2), 
+            .setminute1(setminute1),
+            .setminute2(setminute2),
+            .setsecond1(setsecond1),
+            .setsecond2(setsecond2)
+    );
+
+divclk_scan test_myscan_clk( //输出1000Hz扫描时钟
+        .CLK(CLK), 
+        .reset(reset),
+        .scan_clk(scan_clk) 
+ );
+
+divclk_1Hz test_myclock_clk( //输出1Hz计时时钟
+        .CLK(CLK), 
+        .reset(reset),
+        .clock_clk(clock_clk)
+);
+clock test_clock(
+        .clock_clk(clock_clk), 
+        .scan_clk(scan_clk), 
+        .reset(reset), 
+        .set(set),
+        
+        .hour1(hour1),     
+        .hour2(hour2),
+        .minute1(minute1),
+        .minute2(minute2),
+        .second1(second1),
+        .second2(second2),
+        
+        .sethour1(sethour1),
+        .sethour2(sethour2),
+        .setminute1(setminute1),
+        .setminute2(setminute2),
+        .setsecond1(setsecond1),
+        .setsecond2(setsecond2),
+    
+        .clock_seg(display_out[7:0]),
+        .seln(display_out[11:8])
+    );
+
+assign reset = SW0;
+assign set = SW1;
+
+
+endmodule
+module debounce(
+            input CLK,
+            input reset,
+            input key_in,
+            output key_out
+);
+reg delay1;
+reg delay2;
+reg delay3;
+always@(posedge CLK, negedge reset)begin
+    if(~reset)begin
+        delay1 <=1'b0;
+        delay2 <=1'b0;
+        delay3 <=1'b0;
+    end
+    else begin
+        delay1 <= key_in;
+        delay2 <= delay1;
+        delay3 <= delay2;
+    end
+end
+
+assign key_out = delay3;
+
+endmodule
