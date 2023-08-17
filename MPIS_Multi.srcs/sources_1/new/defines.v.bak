@@ -1,0 +1,33 @@
+
+
+`define R_OP     6'd0
+`define BLTZ_OP  6'd1
+`define J_OP     6'd
+`define JAL_OP   6'd
+`define BEQ_OP   6'd
+`define BNE_OP   6'd
+`define BLEZ_OP  6'd
+`define BGRZ_OP  6'd
+`define ADDI_OP  6'd
+`define ADDIU_OP 6'd
+`define SLTI_OP  6'd
+`define SLTIU_OP 6'd
+`define ANDI_OP  6'd
+`define ORI_OP   6'd
+`define XORI_OP  6'd
+`define LUI      6'd
+`define MFC0     6'd
+`define F_OP     6'd
+`define BCLF_OP  6'd
+`define MUL_OP   6'd
+`define LB_OP    6'd
+`define LH_OP    6'd
+`define LW_OP    6'd35
+`define LBU_OP   6'd
+`define LHU_OP   6'd
+`define SB_OP    6'd
+`define SH_OP    6'd
+`define SW_OP    6'd43
+`define LWCL_OP  6'd
+`define SWCL_OP  6'd
+
