@@ -1,0 +1,21 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../MIPS_pipline_sv.srcs/sources_1/new/ex.sv" \
+"../../../../MIPS_pipline_sv.srcs/sources_1/new/ex_mem.sv" \
+"../../../../MIPS_pipline_sv.srcs/sources_1/new/id_ex.sv" \
+"../../../../MIPS_pipline_sv.srcs/sources_1/new/inst_decoder.sv" \
+"../../../../MIPS_pipline_sv.srcs/sources_1/new/inst_reg.sv" \
+"../../../../MIPS_pipline_sv.srcs/sources_1/new/inst_rom.sv" \
+"../../../../MIPS_pipline_sv.srcs/sources_1/new/mem.sv" \
+"../../../../MIPS_pipline_sv.srcs/sources_1/new/mem_wb.sv" \
+"../../../../MIPS_pipline_sv.srcs/sources_1/new/mips_pipline.sv" \
+"../../../../MIPS_pipline_sv.srcs/sources_1/new/mips_pipline_sopc.sv" \
+"../../../../MIPS_pipline_sv.srcs/sources_1/new/pc_reg.sv" \
+"../../../../MIPS_pipline_sv.srcs/sources_1/new/regfile.sv" \
+"../../../../MIPS_pipline_sv.srcs/sim_1/new/mips_pipline_sopc_tb.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

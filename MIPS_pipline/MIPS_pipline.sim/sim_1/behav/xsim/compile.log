@@ -1,0 +1,28 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/ex_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/id.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module id
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/id_ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module id_ex
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/if_id.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module if_id
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/inst_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module inst_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/mem_wb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_wb
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/openmips.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/openmips_min_sopc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips_min_sopc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/pc_reg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pc_reg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/regfile.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module regfile
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/openmips_min_sopc_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips_min_sopc_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline/MIPS_pipline.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

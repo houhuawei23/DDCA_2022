@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Wed Dec 28 20:45:59 2022
+# Process ID: 20012
+# Current directory: C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.sim/sim_1/behav/xsim/xsim.dir/mips_pipline_sopc_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.sim/sim_1/behav/xsim/xsim.dir/mips_pipline_sopc_tb_behav/webtalk/xsim_webtalk.tcl -notrace

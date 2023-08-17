@@ -1,0 +1,4 @@
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+WARNING: File inst_rom.data referenced on D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/inst_rom.v at line 46 cannot be opened for reading. Please ensure that this file is available in the current working directory.
+$stop called at time : 1195 ns : File "D:/03大二学习/02数字逻辑与计算机设计/自己写CPU/自己动手写CPU/Code/Chapter4/openmips_min_sopc_tb.v" Line 50

@@ -1,0 +1,35 @@
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto 0bca8ecfd14845e788c23d5c04122b88 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot mips_pipline_sopc_tb_behav xil_defaultlib.mips_pipline_sopc_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.srcs/sources_1/new/inst_reg.sv" Line 8. Module if_id_reg doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.srcs/sources_1/new/inst_decoder.sv" Line 20. Module id doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.srcs/sources_1/new/id_ex.sv" Line 4. Module id_ex_reg doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.srcs/sources_1/new/ex.sv" Line 8. Module ex doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.srcs/sources_1/new/ex_mem.sv" Line 2. Module ex_mem_reg doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.srcs/sources_1/new/inst_reg.sv" Line 8. Module if_id_reg doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.srcs/sources_1/new/inst_decoder.sv" Line 20. Module id doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.srcs/sources_1/new/id_ex.sv" Line 4. Module id_ex_reg doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.srcs/sources_1/new/ex.sv" Line 8. Module ex doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/hhw/fpga/DDCA_2022/MIPS_pipline_sv/MIPS_pipline_sv.srcs/sources_1/new/ex_mem.sv" Line 2. Module ex_mem_reg doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.pc_reg
+Compiling module xil_defaultlib.if_id_reg
+Compiling module xil_defaultlib.id
+Compiling module xil_defaultlib.regfile
+Compiling module xil_defaultlib.id_ex_reg
+Compiling module xil_defaultlib.ex
+Compiling module xil_defaultlib.ex_mem_reg
+Compiling module xil_defaultlib.mem
+Compiling module xil_defaultlib.mem_wb_reg
+Compiling module xil_defaultlib.mips_pipline
+Compiling module xil_defaultlib.inst_rom
+Compiling module xil_defaultlib.mips_pipline_sopc
+Compiling module xil_defaultlib.mips_pipline_sopc_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot mips_pipline_sopc_tb_behav
